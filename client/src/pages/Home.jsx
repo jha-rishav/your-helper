@@ -122,6 +122,55 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Festival Offers & Promo Codes */}
+      <section className="section-pad border-t border-white/10">
+        <div className="container-custom">
+          <div className="text-center mb-12">
+            <span className="glass px-4 py-2 rounded-full text-sm text-orange-300 font-medium inline-block mb-4">🎊 Limited Time Offers</span>
+            <h2 className="text-4xl font-black mb-4">Festival <span className="gradient-text">Offers</span></h2>
+            <p className="text-gray-400 max-w-xl mx-auto">Celebrate with exclusive discounts. Use promo codes at checkout!</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            {[
+              { festival: '🎃 Halloween Special', discount: '20% OFF', code: 'HALLOWEEN20', desc: 'On all college & internship services', expiry: 'Oct 31, 2025', color: 'from-orange-600/20 to-yellow-600/10', border: 'border-orange-500/30' },
+              { festival: '🪔 Diwali Dhamaka', discount: '30% OFF', code: 'DIWALI30', desc: 'On all bookings above ₹499', expiry: 'Nov 5, 2025', color: 'from-yellow-600/20 to-orange-600/10', border: 'border-yellow-500/30', hot: true },
+              { festival: '🎄 Christmas Offer', discount: '25% OFF', code: 'XMAS25', desc: 'On event & party planning services', expiry: 'Dec 25, 2025', color: 'from-green-600/20 to-blue-600/10', border: 'border-green-500/30' },
+            ].map((offer, i) => (
+              <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }}
+                className={`glass rounded-2xl p-6 relative overflow-hidden border ${offer.border}`}
+                style={{ background: `linear-gradient(135deg, ${offer.color.split(' ')[0].replace('from-', 'rgba(').replace('/20', ',0.2)')} , transparent)` }}>
+                {offer.hot && <span className="absolute top-3 right-3 bg-red-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">🔥 HOT</span>}
+                <p className="text-2xl mb-2">{offer.festival}</p>
+                <p className="text-3xl font-black gradient-text mb-1">{offer.discount}</p>
+                <p className="text-gray-400 text-sm mb-4">{offer.desc}</p>
+                <div className="flex items-center justify-between">
+                  <div className="glass px-4 py-2 rounded-xl">
+                    <p className="text-xs text-gray-400 mb-0.5">Promo Code</p>
+                    <p className="font-black text-purple-300 tracking-widest text-sm">{offer.code}</p>
+                  </div>
+                  <button onClick={() => { navigator.clipboard.writeText(offer.code); }} className="text-xs text-purple-400 hover:text-purple-300 transition-colors">
+                    📋 Copy
+                  </button>
+                </div>
+                <p className="text-xs text-gray-500 mt-3">⏰ Valid till {offer.expiry}</p>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Promo Code Input */}
+          <div className="glass rounded-2xl p-8 max-w-xl mx-auto text-center">
+            <h3 className="text-xl font-bold mb-2">Have a Promo Code?</h3>
+            <p className="text-gray-400 text-sm mb-6">Enter your code while booking a service to get instant discount</p>
+            <div className="flex gap-3">
+              <input type="text" placeholder="Enter promo code (e.g. DIWALI30)" className="flex-1 bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 outline-none focus:border-purple-500 transition-colors text-sm uppercase" />
+              <button className="btn-primary text-sm py-3 px-6">Apply</button>
+            </div>
+            <p className="text-xs text-gray-500 mt-3">Promo codes are applied automatically during service booking</p>
+          </div>
+        </div>
+      </section>
+
       {/* Stats */}
       <section className="section-pad border-y border-white/10">
         <div className="container-custom grid grid-cols-2 md:grid-cols-4 gap-6">

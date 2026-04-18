@@ -9,7 +9,9 @@ const userSchema = new mongoose.Schema({
   role: { type: String, enum: ['user', 'admin'], default: 'user' },
   avatar: { type: String, default: '' },
   isVerified: { type: Boolean, default: false },
-  trackingRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking' }]
+  trackingRequests: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Booking' }],
+  otp: { type: String },
+  otpExpiry: { type: Date }
 }, { timestamps: true });
 
 userSchema.pre('save', async function (next) {

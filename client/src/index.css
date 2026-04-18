@@ -4,10 +4,18 @@
 
 @layer base {
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Inter', sans-serif; background: #0a0a0f; color: #fff; }
+  body { font-family: 'Inter', sans-serif; transition: background 0.3s, color 0.3s; }
   ::-webkit-scrollbar { width: 6px; }
   ::-webkit-scrollbar-track { background: #111; }
   ::-webkit-scrollbar-thumb { background: #6C63FF; border-radius: 3px; }
+
+  /* Dark mode (default) */
+  html.dark body { background: #0a0a0f; color: #fff; }
+  html.dark ::-webkit-scrollbar-track { background: #111; }
+
+  /* Light mode */
+  html.light body { background: #f5f5ff; color: #1a1a2e; }
+  html.light ::-webkit-scrollbar-track { background: #e5e5f5; }
 }
 
 @layer utilities {
@@ -17,21 +25,37 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
-  .glass {
+
+  /* Dark glass */
+  html.dark .glass {
     background: rgba(255,255,255,0.05);
     backdrop-filter: blur(12px);
     border: 1px solid rgba(255,255,255,0.1);
   }
-  .card-hover {
-    transition: all 0.3s ease;
+
+  /* Light glass */
+  html.light .glass {
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(108,99,255,0.15);
+    box-shadow: 0 4px 24px rgba(108,99,255,0.08);
   }
+
+  /* Light mode text overrides */
+  html.light .text-gray-400 { color: #6b7280; }
+  html.light .text-gray-300 { color: #374151; }
+  html.light .text-gray-500 { color: #9ca3af; }
+  html.light .text-white { color: #1a1a2e; }
+
+  .card-hover { transition: all 0.3s ease; }
   .card-hover:hover {
     transform: translateY(-6px);
     box-shadow: 0 20px 40px rgba(108,99,255,0.3);
   }
+
   .btn-primary {
     background: linear-gradient(135deg, #6C63FF, #8B5CF6);
-    color: white;
+    color: white !important;
     padding: 12px 28px;
     border-radius: 50px;
     font-weight: 600;
@@ -45,6 +69,7 @@
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(108,99,255,0.5);
   }
+
   .btn-outline {
     background: transparent;
     color: #6C63FF;
@@ -57,10 +82,16 @@
     display: inline-block;
     text-decoration: none;
   }
-  .btn-outline:hover {
-    background: #6C63FF;
-    color: white;
-  }
+  .btn-outline:hover { background: #6C63FF; color: white; }
+
   .section-pad { padding: 80px 0; }
   .container-custom { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  /* Light mode input fields */
+  html.light input, html.light textarea, html.light select {
+    color: #1a1a2e !important;
+  }
+  html.light input::placeholder, html.light textarea::placeholder {
+    color: #9ca3af !important;
+  }
 }

@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Menu, X, User, LogOut, LayoutDashboard, Shield } from 'lucide-react';
+import { useTheme } from '../context/ThemeContext';
+import { Menu, X, User, LogOut, LayoutDashboard, Shield, Sun, Moon } from 'lucide-react';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const { dark, toggle } = useTheme();
   const [open, setOpen] = useState(false);
+
   const [dropdown, setDropdown] = useState(false);
 
   const handleLogout = () => { logout(); navigate('/'); };
@@ -65,6 +68,9 @@ export default function Navbar() {
               </Link>
               <Link to="/login" className="btn-outline text-sm py-2 px-5">Login</Link>
               <Link to="/register" className="btn-primary text-sm py-2 px-5">Sign Up</Link>
+              <button onClick={toggle} className="glass p-2 rounded-full hover:bg-white/10 transition-all" title="Toggle theme">
+                {dark ? <Sun size={16} className="text-yellow-400" /> : <Moon size={16} className="text-purple-400" />}
+              </button>
             </>
           )}
         </div>
