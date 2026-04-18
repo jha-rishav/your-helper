@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Plus, Edit, Trash2, X, Check } from 'lucide-react';
 import toast from 'react-hot-toast';
 import API from '../../utils/api';
+import AdminLayout from './AdminLayout';
 
 const EMPTY_FORM = { title: '', slug: '', category: 'college', shortDesc: '', description: '', icon: '🛠️', price: 0, priceLabel: 'Starting from', features: '', tags: '', isFeatured: false };
 
@@ -56,10 +57,9 @@ export default function AdminServices() {
   };
 
   return (
-    <>
+    <AdminLayout>
       <Helmet><title>Manage Services - Admin</title></Helmet>
-      <div className="pt-24 section-pad">
-        <div className="container-custom">
+      <div>
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-3xl font-black">Manage <span className="gradient-text">Services</span></h1>
             <button onClick={() => { setShowForm(true); setForm(EMPTY_FORM); setEditId(null); }} className="btn-primary flex items-center gap-2">
@@ -145,8 +145,7 @@ export default function AdminServices() {
             </table>
             {services.length === 0 && <p className="text-center text-gray-500 py-12">No services yet. Add your first service!</p>}
           </div>
-        </div>
       </div>
-    </>
+    </AdminLayout>
   );
 }

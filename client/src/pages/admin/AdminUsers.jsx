@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Trash2, Search } from 'lucide-react';
 import toast from 'react-hot-toast';
 import API from '../../utils/api';
+import AdminLayout from './AdminLayout';
 
 export default function AdminUsers() {
   const [users, setUsers] = useState([]);
@@ -25,10 +26,9 @@ export default function AdminUsers() {
   );
 
   return (
-    <>
+    <AdminLayout>
       <Helmet><title>Manage Users - Admin</title></Helmet>
-      <div className="pt-24 section-pad">
-        <div className="container-custom">
+      <div>
           <div className="flex items-center justify-between mb-8">
             <h1 className="text-3xl font-black">Manage <span className="gradient-text">Users</span></h1>
             <div className="flex items-center gap-2 glass rounded-full px-4 py-2">
@@ -75,8 +75,7 @@ export default function AdminUsers() {
             )}
             {!loading && filtered.length === 0 && <p className="text-center text-gray-500 py-12">No users found</p>}
           </div>
-        </div>
       </div>
-    </>
+    </AdminLayout>
   );
 }

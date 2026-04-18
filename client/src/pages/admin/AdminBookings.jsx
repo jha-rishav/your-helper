@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import toast from 'react-hot-toast';
 import API from '../../utils/api';
+import AdminLayout from './AdminLayout';
 
 const STATUSES = ['pending', 'confirmed', 'in-progress', 'completed', 'cancelled'];
 
@@ -32,10 +33,9 @@ export default function AdminBookings() {
   const filtered = filter === 'all' ? bookings : bookings.filter(b => b.status === filter);
 
   return (
-    <>
+    <AdminLayout>
       <Helmet><title>Manage Bookings - Admin</title></Helmet>
-      <div className="pt-24 section-pad">
-        <div className="container-custom">
+      <div>
           <h1 className="text-3xl font-black mb-8">Manage <span className="gradient-text">Bookings</span></h1>
 
           {/* Filter */}
@@ -139,8 +139,7 @@ export default function AdminBookings() {
               )}
             </div>
           </div>
-        </div>
       </div>
-    </>
+    </AdminLayout>
   );
 }

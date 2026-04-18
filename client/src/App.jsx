@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from 'react-hot-toast';
 import { AuthProvider, useAuth } from './context/AuthContext';
@@ -16,6 +16,7 @@ import Dashboard from './pages/Dashboard';
 import TrackBooking from './pages/TrackBooking';
 import Contact from './pages/Contact';
 
+import AdminLogin from './pages/admin/AdminLogin';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminServices from './pages/admin/AdminServices';
 import AdminBookings from './pages/admin/AdminBookings';
@@ -30,14 +31,18 @@ const ProtectedRoute = ({ children }) => {
 const AdminRoute = ({ children }) => {
   const { user, loading } = useAuth();
   if (loading) return <div className="min-h-screen flex items-center justify-center text-gray-400">Loading...</div>;
-  return user?.role === 'admin' ? children : <Navigate to="/" />;
+  return user?.role === 'admin' ? children : <Navigate to="/admin/login" />;
 };
 
 function AppContent() {
+  const location = useLocation();
+  const isAdminPage = location.pathname.startsWith('/admin');
+
   return (
-    <BrowserRouter>
-      <Navbar />
+    <>
+      {!isAdminPage && <Navbar />}
       <Routes>
+        {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
@@ -47,16 +52,20 @@ function AppContent() {
         <Route path="/track/:bookingId" element={<TrackBooking />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+
+        {/* Admin Routes */}
+        <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
         <Route path="/admin/services" element={<AdminRoute><AdminServices /></AdminRoute>} />
         <Route path="/admin/bookings" element={<AdminRoute><AdminBookings /></AdminRoute>} />
         <Route path="/admin/users" element={<AdminRoute><AdminUsers /></AdminRoute>} />
+
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
-      <Footer />
-      <WhatsAppButton />
+      {!isAdminPage && <Footer />}
+      {!isAdminPage && <WhatsAppButton />}
       <Toaster position="top-right" toastOptions={{ style: { background: '#1a1a2e', color: '#fff', border: '1px solid rgba(255,255,255,0.1)' } }} />
-    </BrowserRouter>
+    </>
   );
 }
 
@@ -64,7 +73,9 @@ export default function App() {
   return (
     <HelmetProvider>
       <AuthProvider>
-        <AppContent />
+        <BrowserRouter>
+          <AppContent />
+        </BrowserRouter>
       </AuthProvider>
     </HelmetProvider>
   );
