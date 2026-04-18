@@ -86,10 +86,38 @@ export default function Home() {
               <button type="submit" className="btn-primary text-sm py-2 px-5">Search</button>
             </form>
 
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 mb-16">
               <Link to="/services" className="btn-primary">Explore Services <ArrowRight size={16} className="inline ml-1" /></Link>
               <Link to="/register" className="btn-outline">Get Started Free</Link>
             </div>
+
+            {/* Login Options Cards */}
+            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-3xl mx-auto">
+              {/* Customer Login */}
+              <Link to="/login" className="glass rounded-2xl p-6 text-center hover:border-purple-500/50 transition-all group card-hover">
+                <div className="text-4xl mb-3">👤</div>
+                <h3 className="font-bold text-white mb-1">Customer Login</h3>
+                <p className="text-gray-400 text-xs mb-4">Access your bookings & track services</p>
+                <span className="text-xs bg-purple-600/20 text-purple-300 px-3 py-1 rounded-full">Login →</span>
+              </Link>
+
+              {/* Sign Up */}
+              <Link to="/register" className="glass rounded-2xl p-6 text-center hover:border-green-500/50 transition-all group card-hover" style={{ background: 'rgba(108,99,255,0.08)' }}>
+                <div className="text-4xl mb-3">🚀</div>
+                <h3 className="font-bold text-white mb-1">New User? Sign Up</h3>
+                <p className="text-gray-400 text-xs mb-4">Create a free account in 30 seconds</p>
+                <span className="text-xs bg-green-600/20 text-green-300 px-3 py-1 rounded-full">Register Free →</span>
+              </Link>
+
+              {/* Admin Login */}
+              <Link to="/admin/login" className="glass rounded-2xl p-6 text-center hover:border-yellow-500/50 transition-all group card-hover">
+                <div className="text-4xl mb-3">🛡️</div>
+                <h3 className="font-bold text-white mb-1">Admin Portal</h3>
+                <p className="text-gray-400 text-xs mb-4">Manage bookings, users & insights</p>
+                <span className="text-xs bg-yellow-600/20 text-yellow-300 px-3 py-1 rounded-full">Admin Login →</span>
+              </Link>
+            </motion.div>
+
           </motion.div>
         </div>
       </section>

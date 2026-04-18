@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Menu, X, User, LogOut, LayoutDashboard } from 'lucide-react';
+import { Menu, X, User, LogOut, LayoutDashboard, Shield } from 'lucide-react';
 
 export default function Navbar() {
   const { user, logout } = useAuth();
@@ -36,7 +36,7 @@ export default function Navbar() {
         </div>
 
         {/* Auth Buttons */}
-        <div className="hidden md:flex items-center gap-3">
+        <div className="hidden md:flex items-center gap-2">
           {user ? (
             <div className="relative">
               <button onClick={() => setDropdown(!dropdown)} className="flex items-center gap-2 glass px-4 py-2 rounded-full text-sm">
@@ -46,11 +46,11 @@ export default function Navbar() {
                 <div className="absolute right-0 mt-2 w-48 glass rounded-xl p-2 shadow-xl">
                   {user.role === 'admin' && (
                     <Link to="/admin" onClick={() => setDropdown(false)} className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 text-sm">
-                      <LayoutDashboard size={14} /> Admin Panel
+                      <Shield size={14} className="text-purple-400" /> Admin Panel
                     </Link>
                   )}
                   <Link to="/dashboard" onClick={() => setDropdown(false)} className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-white/10 text-sm">
-                    <User size={14} /> My Bookings
+                    <LayoutDashboard size={14} /> My Bookings
                   </Link>
                   <button onClick={handleLogout} className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-red-500/20 text-red-400 text-sm w-full">
                     <LogOut size={14} /> Logout
@@ -60,6 +60,9 @@ export default function Navbar() {
             </div>
           ) : (
             <>
+              <Link to="/admin/login" className="flex items-center gap-1.5 glass px-4 py-2 rounded-full text-sm text-purple-300 hover:text-white hover:bg-purple-600/20 transition-all">
+                <Shield size={14} /> Admin
+              </Link>
               <Link to="/login" className="btn-outline text-sm py-2 px-5">Login</Link>
               <Link to="/register" className="btn-primary text-sm py-2 px-5">Sign Up</Link>
             </>
@@ -81,12 +84,23 @@ export default function Navbar() {
             </Link>
           ))}
           {!user ? (
-            <div className="flex gap-3 pt-2">
-              <Link to="/login" onClick={() => setOpen(false)} className="btn-outline text-sm py-2 px-4">Login</Link>
-              <Link to="/register" onClick={() => setOpen(false)} className="btn-primary text-sm py-2 px-4">Sign Up</Link>
+            <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
+              <Link to="/register" onClick={() => setOpen(false)} className="btn-primary text-sm py-2 px-4 text-center">Sign Up Free</Link>
+              <Link to="/login" onClick={() => setOpen(false)} className="btn-outline text-sm py-2 px-4 text-center">Customer Login</Link>
+              <Link to="/admin/login" onClick={() => setOpen(false)} className="flex items-center justify-center gap-2 glass text-sm py-2 px-4 rounded-full text-purple-300">
+                <Shield size={14} /> Admin Login
+              </Link>
             </div>
           ) : (
-            <button onClick={handleLogout} className="text-red-400 text-sm text-left">Logout</button>
+            <div className="flex flex-col gap-2 pt-2 border-t border-white/10">
+              {user.role === 'admin' && (
+                <Link to="/admin" onClick={() => setOpen(false)} className="flex items-center gap-2 text-purple-300 text-sm">
+                  <Shield size={14} /> Admin Panel
+                </Link>
+              )}
+              <Link to="/dashboard" onClick={() => setOpen(false)} className="text-gray-300 text-sm">My Bookings</Link>
+              <button onClick={handleLogout} className="text-red-400 text-sm text-left">Logout</button>
+            </div>
           )}
         </div>
       )}
