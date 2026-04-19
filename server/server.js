@@ -20,6 +20,8 @@ app.use('/api/services', require('./modules/services/services.routes'));
 app.use('/api/bookings', require('./modules/bookings/bookings.routes'));
 app.use('/api/payment',  require('./modules/payment/payment.routes'));
 app.use('/api/admin',    require('./modules/admin/admin.routes'));
+app.use('/api/products', require('./modules/products/products.routes'));
+app.use('/api/queries',  require('./modules/queries/queries.routes'));
 
 // Health check
 app.get('/', (req, res) => res.json({ message: '✅ Your Helper API Running', version: '2.0', architecture: 'Modular Monolith' }));

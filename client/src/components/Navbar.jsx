@@ -17,6 +17,8 @@ export default function Navbar() {
   const navLinks = [
     { label: 'Home', to: '/' },
     { label: 'Services', to: '/services' },
+    { label: 'College', to: '/college' },
+    { label: 'Trip Planning', to: '/trip-planning' },
     { label: 'Track Booking', to: '/track' },
     { label: 'Contact', to: '/contact' },
   ];
