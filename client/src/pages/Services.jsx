@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import API from '../utils/api';
 import ServiceCard from '../components/ServiceCard';
 
-const CATEGORIES = ['all', 'college', 'office', 'event', 'travel', 'internship', 'accommodation', 'other'];
+const CATEGORIES = ['all', 'college', 'travel', 'office', 'event', 'accommodation'];
 
 export default function Services() {
   const [services, setServices] = useState([]);
@@ -29,15 +29,16 @@ export default function Services() {
   return (
     <>
       <Helmet>
-        <title>All Services - Your Helper</title>
-        <meta name="description" content="Browse all services offered by Your Helper - college, office, events, tatkal booking, internships, accommodation and more." />
+        <title>All Services — Your Helper | College, Travel, Events & More</title>
+        <meta name="description" content="Browse all Your Helper services — college documents, tatkal train tickets, trip planning, internships, resume building, office events, accommodation and more across India." />
+        <meta name="keywords" content="your helper services, college documents, tatkal ticket, trip planning, internship, resume building, office events, pg accommodation" />
       </Helmet>
 
       <div className="pt-24 section-pad">
         <div className="container-custom">
-          <div className="text-center mb-12">
-            <h1 className="text-5xl font-black mb-4">All <span className="gradient-text">Services</span></h1>
-            <p className="text-gray-400 max-w-xl mx-auto">Find the perfect service for your needs. We're always adding more!</p>
+          <div className="text-center mb-10">
+            <h1 className="text-4xl font-black mb-3">All <span className="gradient-text">Services</span></h1>
+            <p className="text-gray-400 text-sm">Everything <strong>Your Helper</strong> offers — pick what you need</p>
           </div>
 
           {/* Search */}

@@ -49,36 +49,20 @@ const services = [
   },
   // TRAVEL
   {
-    title: 'Tatkal Train Ticket Booking', slug: 'tatkal-train-booking', category: 'travel',
-    description: 'Struggling to get tatkal train tickets? We book them for you the moment the window opens using our fast systems.',
-    shortDesc: 'Fast tatkal ticket booking — we handle it the moment the window opens.',
+    title: 'Train Ticket Booking', slug: 'tatkal-train-booking', category: 'travel',
+    description: 'Need a train ticket fast? We book tatkal and regular train tickets for you — the moment the booking window opens. No more failed IRCTC attempts or wasted time refreshing.',
+    shortDesc: 'Fast train ticket booking — tatkal & regular, all classes, all routes.',
     icon: '🚂', price: 149, priceLabel: 'Per ticket', isFeatured: true,
-    features: ['Tatkal & Premium Tatkal', 'AC & Sleeper Classes', 'Booking Confirmation in Minutes', 'All Indian Railways Routes', 'SMS & Email Confirmation'],
-    tags: ['train', 'tatkal', 'irctc', 'ticket', 'travel']
+    features: ['Tatkal & Regular Booking', 'All Classes — SL, 3A, 2A, 1A', 'All Indian Railways Routes', 'Booking in Minutes', 'SMS & Email Confirmation'],
+    tags: ['train', 'tatkal', 'irctc', 'ticket', 'travel', 'railway']
   },
   {
-    title: 'Flight Ticket Booking', slug: 'flight-booking', category: 'travel',
-    description: 'We find the best flight deals and book tickets for you across all major airlines. Domestic and international flights, one-way or round trip.',
-    shortDesc: 'Best flight deals booked for you — domestic & international, all airlines.',
-    icon: '✈️', price: 199, priceLabel: 'Per booking', isFeatured: false,
-    features: ['All Major Airlines', 'Domestic & International', 'Best Price Guarantee', 'Round Trip & One Way', 'Instant E-Ticket', 'Cancellation Assistance'],
-    tags: ['flight', 'airline', 'ticket', 'travel', 'international']
-  },
-  {
-    title: 'Trip Planning & Group Tours', slug: 'trip-planning', category: 'travel',
-    description: 'Planning a trip with friends, family or college group? We handle everything — destination selection, hotel booking, transport, itinerary planning and on-trip support. From hill stations to beaches, pilgrimages to adventure trips.',
-    shortDesc: 'Complete trip planning — destination, hotels, transport & itinerary for groups.',
+    title: 'Trip Planning', slug: 'trip-planning', category: 'travel',
+    description: 'Planning a trip with friends, family or college group? Your Helper handles everything — destination selection, hotel booking, transport, day-wise itinerary and on-trip support.',
+    shortDesc: 'Complete trip planning — hotels, transport & itinerary for groups & families.',
     icon: '🗺️', price: 499, priceLabel: 'Starting from', isFeatured: true,
     features: ['Destination Planning', 'Hotel & Resort Booking', 'Bus / Train / Flight Booking', 'Day-wise Itinerary', 'Group Discounts', 'On-Trip Support', 'Budget & Premium Packages'],
-    tags: ['trip', 'tour', 'travel', 'group', 'holiday', 'college trip', 'family trip']
-  },
-  {
-    title: 'Visa Assistance', slug: 'visa-assistance', category: 'travel',
-    description: 'Planning to travel abroad? We help you with the complete visa application process — document checklist, form filling, appointment booking and tracking.',
-    shortDesc: 'Complete visa application help — documents, form filling & appointment booking.',
-    icon: '🛂', price: 999, priceLabel: 'Starting from', isFeatured: false,
-    features: ['Document Checklist', 'Form Filling Assistance', 'Appointment Booking', 'Application Tracking', 'Tourist / Student / Work Visa', 'All Countries'],
-    tags: ['visa', 'passport', 'travel', 'abroad', 'international']
+    tags: ['trip', 'tour', 'travel', 'group', 'holiday', 'college trip', 'family trip', 'your helper trip']
   },
   // OFFICE
   {
