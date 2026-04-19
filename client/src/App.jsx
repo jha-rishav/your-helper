@@ -16,7 +16,7 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import TrackBooking from './pages/TrackBooking';
 import Contact from './pages/Contact';
-import TripPlanning from './pages/TripPlanning';
+
 import CollegeServices from './pages/college/CollegeServices';
 import CollegeProducts from './pages/college/CollegeProducts';
 import StudentForum from './pages/college/StudentForum';
@@ -47,7 +47,6 @@ function AppContent() {
     <>
       {!isAdminPage && <Navbar />}
       <Routes>
-        {/* Public Routes */}
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<Services />} />
         <Route path="/services/:slug" element={<ServiceDetail />} />
@@ -56,19 +55,15 @@ function AppContent() {
         <Route path="/track" element={<TrackBooking />} />
         <Route path="/track/:bookingId" element={<TrackBooking />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/trip-planning" element={<TripPlanning />} />
         <Route path="/college" element={<CollegeServices />} />
         <Route path="/college/products" element={<CollegeProducts />} />
         <Route path="/college/forum" element={<StudentForum />} />
         <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
-
-        {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/admin" element={<AdminRoute><AdminDashboard /></AdminRoute>} />
         <Route path="/admin/services" element={<AdminRoute><AdminServices /></AdminRoute>} />
         <Route path="/admin/bookings" element={<AdminRoute><AdminBookings /></AdminRoute>} />
         <Route path="/admin/users" element={<AdminRoute><AdminUsers /></AdminRoute>} />
-
         <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       {!isAdminPage && <Footer />}
